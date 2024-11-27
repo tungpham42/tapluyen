@@ -5,7 +5,15 @@ const RoutineList = ({ routine, onExerciseClick }) => (
   <div className="routine-list">
     {routine.map((day, idx) => (
       <Card key={idx} className="mb-3">
-        <Card.Header>{day.day}</Card.Header>
+        <Card.Header
+          style={{
+            backgroundColor: "#2fa4e7",
+            color: "white",
+            fontWeight: "700",
+          }}
+        >
+          {day.day}
+        </Card.Header>
         <ListGroup>
           {day.exercises.map((exercise, eIdx) => (
             <ListGroup.Item
