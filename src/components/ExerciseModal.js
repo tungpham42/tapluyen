@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const ExerciseModal = ({ exercise, show, onHide }) => {
-  const [timer, setTimer] = useState(0); // Bộ đếm thời gian
-  const [isRunning, setIsRunning] = useState(false); // Trạng thái chạy/bật
+  const [timer, setTimer] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
+    const tickSound = new Audio("/tick.mp3"); // Âm thanh "tick" từ thư mục public
+
     let interval = null;
     if (isRunning) {
       interval = setInterval(() => {
-        setTimer((prev) => prev + 1);
-      }, 1000); // Cập nhật sau mỗi giây
+        setTimer((prev) => {
+          tickSound.play(); // Phát âm thanh khi bộ đếm giờ tăng
+          return prev + 1;
+        });
+      }, 1000);
     } else if (!isRunning && timer !== 0) {
       clearInterval(interval);
     }
