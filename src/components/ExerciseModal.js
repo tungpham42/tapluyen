@@ -54,19 +54,28 @@ const ExerciseModal = ({ exercise, show, onHide }) => {
 
             <hr />
             <div className="d-flex align-items-center justify-content-between">
-              <span>
-                <strong>Bộ đếm:</strong> {formatTime(timer)}
-              </span>
-              <div>
-                <Button
-                  variant={isRunning ? "danger" : "success"}
-                  onClick={() => setIsRunning(!isRunning)}
+              <div className="text-center mb-4 mx-auto">
+                <h1
+                  style={{
+                    fontSize: "4.2rem",
+                    fontWeight: "bold",
+                    fontFamily: "monospace",
+                    color: "#007bff",
+                  }}
                 >
-                  {isRunning ? "Dừng" : "Bắt đầu"}
-                </Button>{" "}
-                <Button variant="secondary" onClick={resetTimer}>
-                  Đặt lại
-                </Button>
+                  {formatTime(timer)}
+                </h1>
+                <div className="d-flex justify-content-center gap-3">
+                  <Button
+                    variant={isRunning ? "danger" : "success"}
+                    onClick={() => setIsRunning(!isRunning)}
+                  >
+                    {isRunning ? "Dừng" : "Bắt đầu"}
+                  </Button>
+                  <Button variant="secondary" onClick={resetTimer}>
+                    Đặt lại
+                  </Button>
+                </div>
               </div>
             </div>
           </>

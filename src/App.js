@@ -14,7 +14,7 @@ const App = () => {
   };
 
   return (
-    <Container>
+    <Container className="col-md-8">
       <h1 className="my-4">Lịch Tập Luyện Cho Người Mới Bắt Đầu</h1>
       <RoutineList routine={routine} onExerciseClick={handleExerciseClick} />
       <ExerciseModal
