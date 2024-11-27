@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import RoutineList from "./components/RoutineList";
+import ExerciseModal from "./components/ExerciseModal";
+import routine from "./data/routine";
 
-function App() {
+const App = () => {
+  const [selectedExercise, setSelectedExercise] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleExerciseClick = (exercise) => {
+    setSelectedExercise(exercise);
+    setShowModal(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <h1 className="my-4">Lịch Tập Luyện Cho Người Mới Bắt Đầu</h1>
+      <RoutineList routine={routine} onExerciseClick={handleExerciseClick} />
+      <ExerciseModal
+        exercise={selectedExercise}
+        show={showModal}
+        onHide={() => setShowModal(false)}
+      />
+    </Container>
   );
-}
+};
 
 export default App;
